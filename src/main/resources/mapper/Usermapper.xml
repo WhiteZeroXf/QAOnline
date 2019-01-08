@@ -10,12 +10,13 @@
         <result column="user_type" property="userType" />
         <result column="user_gender" property="userGender" />
         <result column="user_class_id" property="userClassId" />
-        <result column="user_headImg" property="userHeadimg" />
+        <result column="user_head_img" property="userHeadImg" />
+        <result column="user_nick_name" property="userNickName" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        user_id, user_name, password, user_type, user_gender, user_class_id, user_headImg
+        user_id, user_name, password, user_type, user_gender, user_class_id, user_head_img, user_nick_name
     </sql>
 
 </mapper>

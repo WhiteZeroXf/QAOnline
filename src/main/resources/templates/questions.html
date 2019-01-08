@@ -1,0 +1,64 @@
+<head xmlns:th="http://www.w3.org/1999/xhtml">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <title>首页</title>
+</head>
+<body>
+
+<div class="container mt-2">
+    <div class="card text-center">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs row">
+                <li class="nav-item col-2">
+                    <a id="index" class="nav-link" href="/api/v1/question/all">首页</a>
+                </li>
+                <li class="nav-item col-2">
+                    <a id="hot" class="nav-link" href="/api/v1/question/hot">热点</a>
+                </li>
+                <li class="nav-item col-2">
+                    <a id="quality" class="nav-link" href="/api/v1/question/quality">精品</a>
+                </li>
+                <li class="nav-item col-2"></li>
+                <li class="nav-item col-2"></li>
+                <li class="nav-item col-1"><a class="btn btn-sm btn-success"
+                                              href="TopicDispatcher/toAddTopic?sectionId=${section.id}">我要提问</a></li>
+                <li class="nav-item col-1 m-0 p-0">
+                    <a th:if="${session.user}" href="userInfo.html" class="rounded-circle"
+                       th:text="${session.user.userNickName}"></a>
+                    <a th:if="not ${session.user}" href="/to/login">登录</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="card bg-light mb-3" style="">
+                <div class="list-group-item" th:if="${#lists.isEmpty(questions)}">
+                    <div class="col-7 text-left">暂无问题</div>
+                </div>
+
+                <div class="list-group" th:if="${not #lists.isEmpty(questions)}">
+                    <div class="list-group-item">
+                        <div class="row">
+                            <div class="col-7 text-left">标题</div>
+                            <div class="col-2">作者</div>
+                            <div class="col-1">回复数</div>
+                            <div class="col-2">发布日期</div>
+                        </div>
+                    </div>
+                    <div class="list-group-item" th:each="q : ${questions}">
+                        <div class="row">
+                            <a th:href="@{/api/v1/question/one(id=${q.question_id})}" class="col-7 text-left" th:text="${q.question_title}"></a>
+                            <div class="col-2" th:text="${q.user_name}"></div>
+                            <div class="col-1" th:text="${q.sum}"></div>
+                            <div class="col-2" th:text="${q.create_time}" style="font-size:14px;padding-top: 2px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

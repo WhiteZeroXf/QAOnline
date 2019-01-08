@@ -39,7 +39,7 @@ public abstract class BaseController<T> {
      *
      * @return 删除成功/失败
      */
-    @DeleteMapping(value = "delete")
+    @DeleteMapping(value = "json/delete")
     public ResponseBean delete(String id) {
         service().removeById(id);
         return ResponseBean.OK.data("删除成功");
@@ -50,7 +50,7 @@ public abstract class BaseController<T> {
      *
      * @return 全部数据列表
      */
-    @GetMapping(value = "all")
+    @GetMapping(value = "json/all")
     public ResponseBean listAll() {
         return ResponseBean.OK.data(service().list(new QueryWrapper<T>()));
     }
@@ -61,7 +61,7 @@ public abstract class BaseController<T> {
      * @param entity 新增实体
      * @return 新增成功/失败
      */
-    @PostMapping(value = "addTest")
+    @PostMapping(value = "json/add")
     public ResponseBean save(@RequestBody T entity) {
         service().save(entity);
         return ResponseBean.OK.data("新增成功");

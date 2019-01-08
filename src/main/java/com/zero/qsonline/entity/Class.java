@@ -1,51 +1,54 @@
 package com.zero.qsonline.entity;
 
-import lombok.*;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
 import java.io.Serializable;
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author ${author}
+ * @since 2019-01-08
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
 @TableName("t_class")
 public class Class extends Model<Class> {
 
-private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
-                    @TableId(value = "class_id", type = IdType.UUID)
-                private String classId;
-    /**
-     * 系id
-     */
-        private String deptId;
-    /**
-     * 班级名称
-     */
-        private String className;
-
-
-    /**
-     * 
-     */
-    public static final String CLASS_ID ="class_id";
+    @TableId(value = "class_id", type = IdType.UUID)
+    private String classId;
 
     /**
      * 系id
      */
-    public static final String DEPT_ID ="dept_id";
+    private String deptId;
 
     /**
      * 班级名称
      */
-    public static final String CLASS_NAME ="class_name";
+    private String className;
 
-@Override
-protected Serializable pkVal(){
-            return this.classId;
-        }
 
-        }
+    public static final String CLASS_ID = "class_id";
+
+    public static final String DEPT_ID = "dept_id";
+
+    public static final String CLASS_NAME = "class_name";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.classId;
+    }
+
+}

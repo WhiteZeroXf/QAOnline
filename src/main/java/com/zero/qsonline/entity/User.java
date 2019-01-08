@@ -1,89 +1,89 @@
 package com.zero.qsonline.entity;
 
-import lombok.*;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
 import java.io.Serializable;
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author ${author}
+ * @since 2019-01-08
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
 @TableName("t_user")
 public class User extends Model<User> {
 
-private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
-                    @TableId(value = "user_id", type = IdType.UUID)
-                private String userId;
-    /**
-     * 用户名
-     */
-        private String userName;
-    /**
-     * 登录密码
-     */
-        private String password;
-    /**
-     * 1学生/2教师/3管理员
-     */
-        private Integer userType;
-    /**
-     * 0女/1男
-     */
-        private Integer userGender;
-    /**
-     * 用户班级
-     */
-        private String userClassId;
-    /**
-     * 用户头像
-     */
-    @TableField("user_headImg")
-        private String userHeadimg;
-
-
-    /**
-     * 
-     */
-    public static final String USER_ID ="user_id";
+    @TableId(value = "user_id", type = IdType.UUID)
+    private String userId;
 
     /**
      * 用户名
      */
-    public static final String USER_NAME ="user_name";
+    private String userName;
 
     /**
      * 登录密码
      */
-    public static final String PASSWORD ="password";
+    private String password;
 
     /**
      * 1学生/2教师/3管理员
      */
-    public static final String USER_TYPE ="user_type";
+    private Integer userType;
 
     /**
      * 0女/1男
      */
-    public static final String USER_GENDER ="user_gender";
+    private Integer userGender;
 
     /**
      * 用户班级
      */
-    public static final String USER_CLASS_ID ="user_class_id";
+    private String userClassId;
 
     /**
      * 用户头像
      */
-    public static final String USER_HEADIMG ="user_headImg";
+    private String userHeadImg;
 
-@Override
-protected Serializable pkVal(){
-            return this.userId;
-        }
+    /**
+     * 昵称
+     */
+    private String userNickName;
 
-        }
+
+    public static final String USER_ID = "user_id";
+
+    public static final String USER_NAME = "user_name";
+
+    public static final String PASSWORD = "password";
+
+    public static final String USER_TYPE = "user_type";
+
+    public static final String USER_GENDER = "user_gender";
+
+    public static final String USER_CLASS_ID = "user_class_id";
+
+    public static final String USER_HEAD_IMG = "user_head_img";
+
+    public static final String USER_NICK_NAME = "user_nick_name";
+
+    @Override
+    protected Serializable pkVal() {
+        return this.userId;
+    }
+
+}
