@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div class="container mt-2">
+<div class="container">
     <div class="card text-center">
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs row">
@@ -24,9 +24,10 @@
                 <li class="nav-item col-2"></li>
                 <li class="nav-item col-2"></li>
                 <li class="nav-item col-1"><a class="btn btn-sm btn-success"
-                                              href="TopicDispatcher/toAddTopic?sectionId=${section.id}">我要提问</a></li>
+                                              href="TopicDispatcher/toAddTopic?sectionId=${section.id}">我要提问</a>
+                </li>
                 <li class="nav-item col-1 m-0 p-0">
-                    <a th:if="${session.user}" href="userInfo.html" class="rounded-circle"
+                    <a th:if="${session.user}" href="/to/userInfo" class="rounded-circle"
                        th:text="${session.user.userNickName}"></a>
                     <a th:if="not ${session.user}" href="/to/login">登录</a>
                 </li>

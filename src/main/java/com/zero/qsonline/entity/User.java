@@ -16,7 +16,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ${author}
- * @since 2019-01-08
+ * @since 2019-01-09
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -47,7 +47,7 @@ public class User extends Model<User> {
     /**
      * 0女/1男
      */
-    private Integer userGender;
+    private String userGender;
 
     /**
      * 用户班级

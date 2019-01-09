@@ -66,8 +66,11 @@ public class QuestionController extends BaseController<Question> {
         if (question == null) {
             return "redirect:/";
         }
-        User user = userService.getOne(new QueryWrapper<User>().eq(User.USER_ID, question.getUserId()));
-        List<Answer> answers = answerService.list(new QueryWrapper<Answer>().eq(Answer.QUESTION_ID, question.getQuestionId()));
+        User user = userService.getOne(new QueryWrapper<User>()
+                .eq(User.USER_ID, question.getUserId()));
+        List<Answer> answers = answerService.list(new QueryWrapper<Answer>()
+                .eq(Answer.QUESTION_ID, question.getQuestionId())
+                .orderByDesc(Answer.CREATE_TIME));
         map.put("question", question);
         map.put("author", user);
         map.put("answers", answers);

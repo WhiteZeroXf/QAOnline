@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author ${author}
- * @since 2019-01-08
+ * @since 2019-01-09
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -45,6 +45,11 @@ public class Answer extends Model<Answer> {
      */
     private LocalDateTime createTime;
 
+    /**
+     * 回复
+     */
+    private String content;
+
 
     public static final String ANSWER_ID = "answer_id";
 
@@ -53,6 +58,8 @@ public class Answer extends Model<Answer> {
     public static final String USER_ID = "user_id";
 
     public static final String CREATE_TIME = "create_time";
+
+    public static final String CONTENT = "content";
 
     @Override
     protected Serializable pkVal() {
