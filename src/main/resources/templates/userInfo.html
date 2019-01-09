@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <title>用户详情</title>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            <ul class="nav nav-tabs card-header-tabs row">
+                <li class="nav-item col-2">
+                    <a id="index" class="nav-link" href="/api/v1/question/all">首页</a>
+                </li>
+                <li class="nav-item col-2">
+                    <a id="hot" class="nav-link" href="/api/v1/question/hot">热点</a>
+                </li>
+                <li class="nav-item col-2">
+                    <a id="quality" class="nav-link" href="/api/v1/question/quality">精品</a>
+                </li>
+                <li class="nav-item col-2"></li>
+                <li class="nav-item col-2"></li>
+                <li class="nav-item col-1"><a class="btn btn-sm btn-success"
+                                              href="TopicDispatcher/toAddTopic?sectionId=${section.id}">我要提问</a></li>
+                <li class="nav-item col-1 m-0 p-0">
+                    <a th:if="${session.user}" href="/to/userInfo" class="rounded-circle"
+                       th:text="${session.user.userNickName}"></a>
+                    <a th:if="not ${session.user}" href="/to/login">登录</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body row">
+            <div class="col-4"></div>
+            <form action="/api/v1/user/update" method="POST" class="col-4">
+                <div class="form-group">
+                    <label for="text">登录名:</label>
+                    <input id="text" type="text" readonly
+                           class="form-control" name="userName" placeholder="请输入用户名" maxlength="20"
+                           th:value="${session.user.userName}">
+                </div>
+                <div class="form-group">
+                    <label for="nickName">昵称:</label>
+                    <input id="nickName" type="text"
+                           class="form-control" name="userNickName" placeholder="请输入昵称"
+                           maxlength="20" th:value="${session.user.userNickName}">
+                </div>
+                <div class="form-group">
+                    <label for="userGender">性别:</label>
+                    <input id="userGender" type="text"
+                           class="form-control" name="userGender" readonly th:value="${session.user.userGender}">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">密码:</label>
+                    <input id="pwd" type="password"
+                           class="form-control" name="password" placeholder="请输入密码"
+                           maxlength="20" th:value="${session.user.password}">
+                </div>
+                <br>
+                <div>
+                    <button type="submit" class="btn btn-outline-info" style="width: 200px">更新</button>
+                    <a href="/api/v1/user/logout" class="btn btn-outline-danger">退出登录</a>
+                </div>
+            </form>
+            <div class="col-4"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
