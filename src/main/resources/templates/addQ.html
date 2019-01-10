@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <title>提问</title>
+</head>
+<body>
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            <div th:replace="tmp :: nav"></div>
+        </div>
+        <div class="card-body row">
+            <div class="col-2"></div>
+            <form action="/api/v1/question/add" method="POST" class="col-8">
+                <div class="form-group text-left">
+                    <label for="text">问题名称:</label>
+                    <input id="text" type="text" class="form-control" name="questionTitle" placeholder="请输入问题名称"
+                           maxlength="20">
+                </div>
+                <div class="form-group text-left">
+                    <label for="nickName">问题详情:</label>
+                    <textarea id="nickName" type="text" rows="20"
+                              class="form-control" name="questionContext" placeholder="请输入问题详情" maxlength="1000"></textarea>
+                    <br>
+                    <div>
+                        <button type="submit" class="btn btn-outline-info" style="width: 300px">提交</button>
+                    </div>
+            </form>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

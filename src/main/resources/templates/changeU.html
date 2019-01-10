@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <title>新增用户</title>
+</head>
+<body>
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            <div th:replace="tmp :: nav"></div>
+        </div>
+        <div class="card-body row">
+            <div class="col-4"></div>
+            <form action="/api/v1/user/update/admin" method="POST" class="col-4">
+                <label for="userId"><input id="userId" name="userId" th:value="${user.userId}" hidden></label>
+                <div class="form-group text-left">
+                    <label for="text">登录名:</label>
+                    <span class="badge badge-danger" style="margin-left:5px;" th:text="${errName}"></span>
+                    <input id="text" type="text"
+                           class="form-control" name="userName" placeholder="请输入登录名" maxlength="20"
+                           th:value="${user.userName}">
+                </div>
+                <div class="form-group text-left">
+                    <label for="nickName">昵称:</label>
+                    <span class="badge badge-danger" style="margin-left:5px;" th:text="${errNick}"></span>
+                    <input id="nickName" type="text"
+                           class="form-control" name="userNickName" placeholder="请输入昵称" maxlength="20"
+                           th:value="${user.userNickName}">
+                </div>
+                <div class="form-group text-left">
+                    <label for="userGender">性别:</label>
+                    <span class="badge badge-danger" style="margin-left:5px;" th:text="${errSex}"></span>
+                    <div class="form-control" id="userGender">
+                        <label class="my-auto">
+                            <input type="radio" name="userGender" value="男" th:checked="${user.userGender eq '男'}">男
+                        </label>
+                        <label class="ml-3 my-auto">
+                            <input type="radio" name="userGender" value="女" th:checked="${user.userGender eq '女'}">女
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group text-left">
+                    <label for="userType">用户类型:</label>
+                    <select id="userType" name="userType" class="form-control">
+                        <option value="1" th:selected="${user.userType == 1}">用户</option>
+                        <option value="2" th:selected="${user.userType == 2}">教师</option>
+                        <option value="3" th:selected="${user.userType == 3}">管理员</option>
+                    </select>
+                </div>
+                <div class="form-group text-left">
+                    <label for="pwd">密码:</label>
+                    <span class="badge badge-danger" style="margin-left:5px;" th:text="${errPwd}"></span>
+                    <input id="pwd" type="password"
+                           class="form-control" name="password" placeholder="请输入密码" maxlength="20"
+                           th:value="${user.password}">
+
+                </div>
+                <br>
+                <div>
+                    <button type="submit" class="btn btn-outline-info" style="width: 200px">更新</button>
+                </div>
+            </form>
+            <div class="col-4"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

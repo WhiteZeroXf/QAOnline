@@ -1,0 +1,53 @@
+<head xmlns:th="http://www.w3.org/1999/xhtml">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <title>用户管理</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            <div th:replace="tmp :: nav"></div>
+        </div>
+        <div class="card-body">
+            <div class="card bg-light mb-3" style="">
+                <div class="list-group-item" th:if="${#lists.isEmpty(users)}">
+                    <div class="col-7 text-left">暂无用户</div>
+                </div>
+
+                <div class="list-group" th:if="${not #lists.isEmpty(users)}">
+                    <div class="list-group-item">
+                        <div class="row">
+                            <div class="col-3">账号</div>
+                            <div class="col-3">昵称</div>
+                            <div class="col-3">性别</div>
+                            <div class="col-2">管理</div>
+                            <div class="col-1">
+                                <a class="btn btn-sm btn-outline-success my-0" style="font-size: 12px" href="/to/addU">新增用户</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item" th:each="u : ${users}">
+                        <div class="row">
+                            <div class="col-3" th:text="${u.userName}"></div>
+                            <div class="col-3" th:text="${u.userNickName}"></div>
+                            <div class="col-3" th:text="${u.userGender}"></div>
+                            <div class="col-3">
+                                <a class="px-1 btn btn-sm btn-outline-warning" th:href="${'/api/v1/user/change?id=' + u.userId}"
+                                                  style="width: 70px;font-size: 14px">修改</a>
+                                <a class="px-1 btn btn-sm btn-outline-danger" th:href="${'/api/v1/user/delete?id=' + u.userId}"
+                                                  style="width: 70px;font-size: 14px">删除</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

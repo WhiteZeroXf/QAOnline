@@ -12,26 +12,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header text-center">
-            <ul class="nav nav-tabs card-header-tabs row">
-                <li class="nav-item col-2">
-                    <a id="index" class="nav-link" href="/api/v1/question/all">首页</a>
-                </li>
-                <li class="nav-item col-2">
-                    <a id="hot" class="nav-link" href="/api/v1/question/hot">热点</a>
-                </li>
-                <li class="nav-item col-2">
-                    <a id="quality" class="nav-link" href="/api/v1/question/quality">精品</a>
-                </li>
-                <li class="nav-item col-2"></li>
-                <li class="nav-item col-2"></li>
-                <li class="nav-item col-1"><a class="btn btn-sm btn-success"
-                                              href="TopicDispatcher/toAddTopic?sectionId=${section.id}">我要提问</a></li>
-                <li class="nav-item col-1 m-0 p-0">
-                    <a th:if="${session.user}" href="/to/userInfo" class="rounded-circle"
-                       th:text="${session.user.userNickName}"></a>
-                    <a th:if="not ${session.user}" href="/to/login">登录</a>
-                </li>
-            </ul>
+            <div th:replace="tmp :: nav"></div>
         </div>
         <div class="card-body row">
             <div class="col-4"></div>
@@ -44,6 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label for="nickName">昵称:</label>
+                    <span class="badge badge-danger" style="margin-left:5px;" th:text="${errNick}"></span>
                     <input id="nickName" type="text"
                            class="form-control" name="userNickName" placeholder="请输入昵称"
                            maxlength="20" th:value="${session.user.userNickName}">
@@ -55,6 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label for="pwd">密码:</label>
+                    <span class="badge badge-danger" style="margin-left:5px;" th:text="${errPwd}"></span>
                     <input id="pwd" type="password"
                            class="form-control" name="password" placeholder="请输入密码"
                            maxlength="20" th:value="${session.user.password}">

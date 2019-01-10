@@ -1,7 +1,5 @@
 package com.zero.qsonline.controller;
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.zero.qsonline.base.BaseController;
 import com.zero.qsonline.entity.Answer;
 import com.zero.qsonline.entity.User;
 import com.zero.qsonline.service.AnswerService;
@@ -24,11 +22,6 @@ public class AnswerController extends BaseController<Answer> {
     @Autowired
     public AnswerController(AnswerService answerService) {
         this.answerService = answerService;
-    }
-
-    @Override
-    protected IService service() {
-        return this.answerService;
     }
 
     @PostMapping("add")

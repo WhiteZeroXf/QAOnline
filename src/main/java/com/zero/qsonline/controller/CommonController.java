@@ -14,7 +14,7 @@ public class CommonController {
 
     @GetMapping("/")
     public String index() {
-        return "redirect:/api/v1/question/all";
+        return "redirect:/to/login";
     }
 
     @GetMapping("/to/{page}")

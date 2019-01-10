@@ -10,23 +10,23 @@ import java.util.Map;
 
 public interface QuestionMapper extends BaseMapper<Question> {
 
-    @Select("select ifnull((select count(*) sum from t_answer a where a.question_id = q.question_id group by a.question_id), 0) sum " +
+    @Select("select IfNull((select count(*) sum from t_answer a where a.question_id = q.question_id group by a.question_id), 0) sum " +
             "     , q.question_id " +
             "     , q.question_type " +
             "     , left(q.create_time,19) create_time " +
             "     , q.question_title " +
-            "     , u.user_name " +
+            "     , u.user_nick_name " +
             "from t_question q " +
             "       left join t_user u on q.user_id = u.user_id " +
             "order by q.create_time desc")
     List<Map<String, Object>> getAll();
 
-    @Select("select ifnull((select count(*) sum from t_answer a where a.question_id = q.question_id group by a.question_id), 0) sum " +
+    @Select("select IfNull((select count(*) sum from t_answer a where a.question_id = q.question_id group by a.question_id), 0) sum " +
             "     , q.question_id " +
             "     , q.question_type " +
             "     , left(q.create_time,19) create_time " +
             "     , q.question_title " +
-            "     , u.user_name " +
+            "     , u.user_nick_name " +
             "from t_question q " +
             "       left join t_user u on q.user_id = u.user_id " +
             "where q.question_type = #{type} " +

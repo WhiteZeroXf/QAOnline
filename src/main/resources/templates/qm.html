@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
     <script th:src="@{/js/jquery.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
-    <title>首页</title>
+    <title>问题管理</title>
 </head>
 <body>
 
@@ -22,19 +22,28 @@
                 <div class="list-group" th:if="${not #lists.isEmpty(questions)}">
                     <div class="list-group-item">
                         <div class="row">
-                            <div class="col-7 text-left">标题</div>
+                            <div class="col-3 text-left">标题</div>
                             <div class="col-2">作者</div>
                             <div class="col-1">回复数</div>
                             <div class="col-2">发布日期</div>
+                            <div class="col-4">管理</div>
                         </div>
                     </div>
                     <div class="list-group-item" th:each="q : ${questions}">
                         <div class="row">
-                            <a th:href="@{/api/v1/question/one(id=${q.question_id})}" class="col-7 text-left"
+                            <a class="col-3 text-left" th:href="@{/api/v1/question/one(id=${q.question_id})}"
                                th:text="${q.question_title}"></a>
                             <div class="col-2" th:text="${q.user_nick_name}"></div>
                             <div class="col-1" th:text="${q.sum}"></div>
                             <div class="col-2" th:text="${q.create_time}" style="font-size:14px;padding-top: 2px"></div>
+                            <div class="col-1"><a class="px-1 btn btn-sm btn-outline-secondary" th:unless="${q.question_type == 0}" th:href="${'/api/v1/question/update?id=' + q.question_id + '&type=0'}"
+                                                  style="width: 70px;font-size: 14px">设为普通</a></div>
+                            <div class="col-1"><a class="px-1 btn btn-sm btn-outline-secondary" th:unless="${q.question_type == 1}" th:href="${'/api/v1/question/update?id=' + q.question_id + '&type=1'}"
+                                                  style="width: 70px;font-size: 14px">设为热点</a></div>
+                            <div class="col-1"><a class="px-1 btn btn-sm btn-outline-info" th:unless="${q.question_type == 2}" th:href="${'/api/v1/question/update?id=' + q.question_id + '&type=2'}"
+                                                  style="width: 70px;font-size: 14px">设为精品</a></div>
+                            <div class="col-1"><a class="px-1 btn btn-sm btn-outline-danger" th:href="${'/api/v1/question/delete?id=' + q.question_id}"
+                                                  style="width: 70px;font-size: 14px">删除</a></div>
                         </div>
                     </div>
                 </div>

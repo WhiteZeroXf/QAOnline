@@ -1,0 +1,32 @@
+<!-- 导航栏 -->
+<ul class="nav nav-tabs card-header-tabs row" th:fragment="nav">
+    <li class="nav-item col-2">
+        <a id="index" class="nav-link" href="/api/v1/question/all"
+           th:if="${session.user == null || session.user.userType == 1 || session.user.userType == 2}">首页</a>
+    </li>
+    <li class="nav-item col-2">
+        <a id="hot" class="nav-link" href="/api/v1/question/hot"
+           th:if="${session.user == null || session.user.userType == 1 || session.user.userType == 2}">热点问题</a>
+    </li>
+    <li class="nav-item col-2">
+        <a id="quality" class="nav-link" href="/api/v1/question/quality"
+           th:if="${session.user == null || session.user.userType == 1 || session.user.userType == 2}">精品文章</a>
+    </li>
+    <li class="nav-item col-2">
+        <a id="qm" class="nav-link" href="/api/v1/question/qm"
+           th:if="${session.user != null && (session.user.userType == 2 || session.user.userType == 3)}">问题管理</a>
+    </li>
+    <li class="nav-item col-2">
+        <a id="um" class="nav-link" href="/api/v1/user/um"
+           th:if="${session.user != null && session.user.userType == 3}">用户管理</a>
+    </li>
+    <li class="nav-item col-1">
+        <a class="btn btn-sm btn-success" href="/to/addQ"
+           th:if="${session.user != null && session.user.userType == 1}">我要提问</a>
+    </li>
+    <li class="nav-item col-1">
+        <a class="btn btn-link" th:if="${session.user}" href="/to/userInfo" th:text="${session.user.userNickName}"></a>
+        <a class="btn btn-link" th:if="not ${session.user}" href="/to/login">登录</a>
+    </li>
+</ul>
+<!-- 导航栏 end -->
