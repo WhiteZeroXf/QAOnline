@@ -5,29 +5,17 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author ${author}
- * @since 2019-01-09
- */
-@Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
+// 此注解标识表名
 @TableName("t_answer")
 public class Answer extends Model<Answer> {
 
     private static final long serialVersionUID = 1L;
 
+    // 此注解标识表主键，类型为UUID
     @TableId(value = "answer_id", type = IdType.UUID)
     private String answerId;
 
@@ -68,4 +56,43 @@ public class Answer extends Model<Answer> {
         return this.answerId;
     }
 
+    public String getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(String answerId) {
+        this.answerId = answerId;
+    }
+
+    public String getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(String questionId) {
+        this.questionId = questionId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public LocalDateTime getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 }

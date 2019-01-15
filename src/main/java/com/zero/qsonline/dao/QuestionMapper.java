@@ -10,6 +10,10 @@ import java.util.Map;
 
 public interface QuestionMapper extends BaseMapper<Question> {
 
+    /**
+     * 获取所有问题
+     * @return 问题集合
+     */
     @Select("select IfNull((select count(*) sum from t_answer a where a.question_id = q.question_id group by a.question_id), 0) sum " +
             "     , q.question_id " +
             "     , q.question_type " +
@@ -21,6 +25,11 @@ public interface QuestionMapper extends BaseMapper<Question> {
             "order by q.create_time desc")
     List<Map<String, Object>> getAll();
 
+    /**
+     * 根据问题类型获取数据
+     * @param type 类型
+     * @return 问题集合
+     */
     @Select("select IfNull((select count(*) sum from t_answer a where a.question_id = q.question_id group by a.question_id), 0) sum " +
             "     , q.question_id " +
             "     , q.question_type " +

@@ -5,29 +5,17 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author ${author}
- * @since 2019-01-09
- */
-@Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
+// 此注解标识表名
 @TableName("t_question")
 public class Question extends Model<Question> {
 
     private static final long serialVersionUID = 1L;
 
+    // 此注解标识表主键，类型为UUID
     @TableId(value = "question_id", type = IdType.UUID)
     private String questionId;
 
@@ -75,4 +63,51 @@ public class Question extends Model<Question> {
         return this.questionId;
     }
 
+    public String getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(String questionId) {
+        this.questionId = questionId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getQuestionTitle() {
+        return questionTitle;
+    }
+
+    public void setQuestionTitle(String questionTitle) {
+        this.questionTitle = questionTitle;
+    }
+
+    public String getQuestionContext() {
+        return questionContext;
+    }
+
+    public void setQuestionContext(String questionContext) {
+        this.questionContext = questionContext;
+    }
+
+    public Integer getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(Integer questionType) {
+        this.questionType = questionType;
+    }
+
+    public LocalDateTime getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
+    }
 }

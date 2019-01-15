@@ -12,6 +12,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public boolean userNameIsExist(String userName, String userId) {
+        // 通过用户名和id获取用户，为空返回false
         return this.getOne(new QueryWrapper<User>()
                 .eq(User.USER_NAME, userName)
                 .ne(User.USER_ID, userId)) != null;

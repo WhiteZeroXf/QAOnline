@@ -22,16 +22,19 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
 
     @Override
     public List<Map<String, Object>> listAll() {
+        // 获取全部问题
         return questionMapper.getAll();
     }
 
     @Override
     public List<Map<String, Object>> listQuality() {
+        // 获取热点问题
         return questionMapper.getByType(1);
     }
 
     @Override
     public List<Map<String, Object>> listHot() {
+        // 获取精品问题
         return questionMapper.getByType(2);
     }
 }
